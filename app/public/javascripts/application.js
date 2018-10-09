@@ -30,7 +30,9 @@ window.convert.onclick = (function(){
                 });
                 document.querySelectorAll('.file').forEach(function(file){
                     file.querySelector('.save-button').onclick = function(){
-                        saveAs(file.querySelector('code').innerHTML, file.dataset.fileName)
+                        var code = file.querySelector('code').innerText;
+                        var blob = new Blob([code], {type: 'text/plain'});
+                        saveAs(blob, file.dataset.fileName)
                     }
                 });
                 document.querySelectorAll('code').forEach(function(element){

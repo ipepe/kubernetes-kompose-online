@@ -8,7 +8,7 @@ const cors = require('cors');
 
 // Constants
 const app = express();
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
 app.use(express.static('public'));
@@ -28,18 +28,22 @@ app.post('/api/kompose', function(req, res){
     if(req.body.input && req.body.input.length){
         fs.writeFileSync(workdir + 'input.yml', req.body.input);
         exec('kompose convert -f input.yml', { cwd: workdir }, (error, stdout, stderr) => {
-            console.log(stdout);
-            console.error(stderr);
+            if (error){
+                console.error('Kompose stderr:', error);
+            }
             if(stderr && stderr.length){
                 res.status(201);
-                res.send({
-                    outputs: {
-                        'app-service.yaml': fs.readFileSync(workdir + 'app-service.yaml').toString(),
-                        'app-deployment.yaml': fs.readFileSync(workdir + 'app-deployment.yaml').toString()
-                    }
-                })
+                var outputs = {'stdout.log': stdout + stderr};
+
+                fs.readdirSync(workdir).forEach(function(file_name){
+                   if(file_name !== 'input.yml'){
+                       outputs[file_name] = fs.readFileSync(workdir + file_name).toString();
+                   }
+                });
+
+                res.send({outputs: outputs})
             }else{
-                res.send({error: stderr})
+                res.send({error: true})
             }
             exec('rm -rf ' + workdir);
         });
