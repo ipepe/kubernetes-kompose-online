@@ -1,0 +1,28 @@
+{
+  "name": "kubernetes-kompose-online",
+  "version": "1.0.0",
+  "description": "Run kubernetes/kompose online with this docker container",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipepe/kubernetes-kompose-online.git"
+  },
+  "keywords": [
+    "kompose"
+  ],
+  "author": "Patryk ipepe Ptasiński",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ipepe/kubernetes-kompose-online/issues"
+  },
+  "homepage": "https://github.com/ipepe/kubernetes-kompose-online#readme"
+}

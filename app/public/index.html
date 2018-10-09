@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="en" name="language" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />
+    <meta content="yes" name="mobile-web-app-capable" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="Convert docker-compose.yml to kubernetes service files" name="description" />
+    <meta content="kubernetes,kompose,convert,docker,compose,yml,yaml,service,files" name="keywords" />
+    <title>Kubernetes Kompose Online</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="stylesheets/application.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/" rel="home">
+                        <span>Kubernetes Kompose Online</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron">
+            <p>You can convert Your docker-compose.yml file here using Kubernetes/Kompose into service files.</p>
+            <p>This website sends Your docker-compose file to server and converts it. Immediately after conversion while working directory is destroyed.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <textarea id="input" class="form-control" rows="10" placeholder="docker-compose.yml"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <button id="convert" class="btn btn-primary">Convert</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="outputs">
+
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/application.js"></script>
+    <script src="/javascripts/FileSaver.js"></script>
+</body>
+</html>
