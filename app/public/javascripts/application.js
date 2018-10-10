@@ -10,7 +10,7 @@ window.input = document.getElementById('input');
 window.outputs = document.getElementById('outputs');
 
 window.convert.onclick = (function(){
-    document.querySelector('.jumbotron').classList.add('hidden')
+    document.querySelector('.jumbotron').classList.add('hidden');
     var xhr = new XMLHttpRequest();
     xhr.open("POST", '/api/kompose', true);
     xhr.setRequestHeader("Content-Type", "application/json");
